@@ -14,8 +14,9 @@ unsigned char number[10] = {
     0x7F,           //8
     0x6F            //9
 };
- int i, temp = 0;
- unsigned char digit_on = 0;
+long int i = 0;
+long int temp;
+unsigned char digit_on = 0;
 
 ISR(TIMER0_OVF_vect)
 {
@@ -38,6 +39,7 @@ int main(void)
     DDRA = 0xFF;
     DDRD = 0xFF;
     PORTD = 0xFF; 
+    temp = i;
     
     TCCR0 = 0x04;       // F_CPU / 64
     TCNT0 = 255;
@@ -47,6 +49,6 @@ int main(void)
     while (1) 
     {
         // 100hz - 10ms/number - 10/6ms = 1.667ms/digit
-    }
+    }      
 }
 
